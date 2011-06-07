@@ -25,7 +25,7 @@ class DegreesController < ApplicationController
   def list
     @start = params[:start] || '1'
     @end = params[:end] || '20'
-
+    @address = get_address
     @degrees = Degree.find(:all, :order => "id", :offset => @start.to_i-1, :limit => @end.to_i+1-@start.to_i)
 
     respond_to do |format|
@@ -34,7 +34,7 @@ class DegreesController < ApplicationController
   end
 
   def specific
-
+    @address = get_address
     @degreeId = params[:id]
     @degree = Degree.find(@degreeId)
 
