@@ -27,14 +27,5 @@ set :use_sudo, false
 ##################
 
 
-namespace :deploy do
-  desc "Restarting passenger"
-  task :restart, :roles => :app do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-
-  [:start, :stop].each do |t|
-    desc "#{t} task is a no-op with mod_rails"
-    task t, :roles => :app do ; end
 
 
