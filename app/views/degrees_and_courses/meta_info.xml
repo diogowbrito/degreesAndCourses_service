@@ -1,4 +1,4 @@
-<service name="degreesandcourses" url="http://localhost:3002">
+<service name="degreesandcourses" url="<%=@address%>">
     <provider>G6</provider>
     <serviceID>dc</serviceID>
     <type>academics</type>

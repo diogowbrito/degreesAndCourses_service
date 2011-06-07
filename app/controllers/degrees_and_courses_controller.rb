@@ -1,19 +1,21 @@
 class DegreesAndCoursesController < ApplicationController
 
   def description
+    @address = get_address
     respond_to do |format|
       format.xml
     end
   end
 
   def meta_info
+    @address = get_address
     respond_to do |format|
       format.xml
     end
   end
 
   def search
-
+      @address = get_address
       puts params[:keyword]
       @keyword = params[:keyword].gsub("%", "\%").gsub("_", "\_")
       @start = params[:start] || '1'
