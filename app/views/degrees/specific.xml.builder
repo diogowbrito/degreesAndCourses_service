@@ -1,5 +1,5 @@
 xml.record(:title => "Curso") do
-  xml.text(@degree.name, :title => "Name")
+  xml.text(@degree.name, :title => "Nome")
   xml.text(@degree.sigla, :title => "Sigla")
   xml.entity(@degree.department, :title => "Departamento", :kind => "organizational unit")
   xml.text(@degree.degreetype, :title => "Tipo")

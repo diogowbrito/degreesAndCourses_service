@@ -1,7 +1,7 @@
 xml.instruct!(:xml, :version=>"1.0")
 
-xml.list(:title => "Courses", :start => @start, :end => @end) do
+xml.list(:title => "Cadeiras", :start => @start, :end => @end) do
   @courses.each do |course|
-    xml.item(course.name, :title => "Course", :href => @address+"/courses/"+course.id.to_s)
+    xml.item(course.name, :href => @address+"/courses/"+course.id.to_s)
   end
 end
