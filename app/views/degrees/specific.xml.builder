@@ -1,4 +1,4 @@
-xml.record(:title => "Curso") do
+xml.record(:title => "Curso: " + @degree.name) do
   xml.text(@degree.name, :title => "Nome")
   xml.text(@degree.sigla, :title => "Sigla")
   xml.entity(@degree.department, :title => "Departamento", :kind => "organizational unit")
