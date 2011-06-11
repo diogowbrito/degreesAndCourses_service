@@ -1,4 +1,4 @@
-xml.record(:title => "Cadeira") do
+xml.record(:title => "Cadeira: " + @course.name) do
   xml.text(@course.name, :title => "Nome")
   xml.text(@course.period, :title => "Semestre")
   xml.text(@course.sigla, :title => "Sigla")
