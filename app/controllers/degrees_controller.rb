@@ -23,10 +23,19 @@ class DegreesController < ApplicationController
 
 
   def list
-    @start = params[:start] || '1'
-    @end = params[:end] || '20'
+    @start = (params[:start] || '1').to_i
+    @end = (params[:end] || '20').to_i
     @address = get_address
-    @degrees = Degree.find(:all, :order => "id", :offset => @start.to_i-1, :limit => @end.to_i+1-@start.to_i)
+    @next = @address+"/degrees?start="+(@end+1).to_s+"&end="+(@end+1+@end-@start).to_s
+    @degrees = Degree.find(:all, :order => "id", :offset => @start.to_i-1, :limit => @end+1-@start)
+
+    if @degrees.count != @end+1-@start then
+      @next = ""
+    else
+      if @degrees[@end-@start].name == Degree.order(:id).last.name
+        @next = ""
+      end
+    end
 
     respond_to do |format|
       format.xml

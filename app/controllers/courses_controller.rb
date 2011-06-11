@@ -83,10 +83,19 @@ class CoursesController < ApplicationController
 
 
    def list
-    @start = params[:start] || '1'
-    @end = params[:end] || '20'
-     @address = get_address
-    @courses = Course.find(:all, :order => "name", :offset => @start.to_i-1, :limit => @end.to_i+1-@start.to_i)
+    @start = (params[:start] || '1').to_i
+    @end = (params[:end] || '20').to_i
+    @address = get_address
+    @next = @address+"/courses?start="+(@end+1).to_s+"&end="+(@end+1+@end-@start).to_s
+    @courses = Course.find(:all, :order => "name", :offset => @start-1, :limit => @end+1-@start)
+
+     if @courses.count != @end+1-@start then
+      @next = ""
+    else
+      if @courses[@end-@start].name == Course.order(:name).last.name
+        @next = ""
+      end
+    end
 
     respond_to :xml
   end
