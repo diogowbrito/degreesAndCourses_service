@@ -1,4 +1,4 @@
-<service name="Cursos e Cadeiras" url="<%=@address%>">
+<service name="CursosCadeiras" url="<%=@address%>">
     <provider>G6</provider>
     <serviceID>dc</serviceID>
     <type>academics</type>
